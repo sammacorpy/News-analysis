@@ -1,0 +1,31 @@
+/* You can add global styles to this file, and also import other style files */
+// @import "~bootstrap\\scss\\bootstrap.scss";
+// @import url("https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import url('https://fonts.googleapis.com/css?family=Maven+Pro|Raleway|Titillium+Web');
+@import url('https://fonts.googleapis.com/css?family=Righteous');
+body{
+    padding: 0;
+    margin: 0;
+    
+}
+.no-gutter{
+    margin: 0;
+}
+
+.loco-jumbotron{
+    text-align: center;
+    width: 100%;
+    font-family: 'Righteous';
+    padding: 20px 0 10px 0;
+    font-size: 20px; 
+    font-family: Righteous;
+    font-style: normal;
+    font-weight: normal;
+    line-height: normal;
+
+    color: #00695C;
+
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}

@@ -1,0 +1,128 @@
+.login_background{
+    background: #eceff1;
+    height: 100vh;
+    min-height: 600px;
+    display: block;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: normal;
+
+}
+.login_form{
+    display: table;
+    position: relative;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top:20vh;
+}
+.login_form_email{
+//
+display: block;
+}
+.element{
+    box-sizing: border-box;
+    position: relative;
+    width: 20vw;
+    height: 45px;
+    min-width: 300px;
+    border: none;
+    outline: none;
+    padding-left: 10px;
+    color: #131a17;
+    margin: 10px 0;
+    border-radius: 5px;
+
+}
+.element[type="button"]{
+    background: #69f0ae;
+    padding: 0;
+    font-weight: bold;
+    border-radius: 5px;
+
+}
+a.forgot{
+    padding: 0;
+    color: #929292;
+    cursor: pointer;
+    outline: none;
+    text-decoration: none;
+
+}
+
+.forgot:hover{
+    color: #35ce84;
+}
+// .forgot:visited{
+//     color: #35ce84;
+// }
+.login_form_google{
+    box-sizing: border-box;
+    height: 50px;
+    line-height: 45px;  
+    display: table;
+    text-align: center;
+    left: 0;
+    right: 0;
+    margin: auto;
+    margin-top:60px; 
+    padding: 10px;
+    border-radius: 10px;
+    background: #fff;
+    cursor: pointer;
+    align-content: center;
+    outline: none;
+}
+.signin{
+    width: 30px;
+    height: 30px;
+    margin: 0 0px 0 0;
+}
+
+.login_anonymous{
+    position: absolute;
+    top:30px;
+    right: 30px;
+    font-size: 18px;
+    background: #fff;
+    color: #17b86a;
+    border-radius: 100%;
+    width: 70px;
+    height: 70px;
+    align-content: center;
+    text-align: center;
+    outline: none;
+    border: none;
+    box-shadow: 0 0 1px #17b86a;
+    cursor: pointer;
+    
+}
+.login_anonymous:active{
+    background: #35ce84;
+    color: #fff;
+}
+// .login_anonymous:active{
+//     background: #35ce84;
+//     color: #eceff1;
+// }
+.signup{
+    position: relative;
+    right: -105px;
+    float: right;
+}
+
+@media(max-width:720px){
+    .login_anonymous{
+        
+        width: 50px !important;
+        height: auto !important;
+        padding: 5px 0;
+        font-size: 10px;
+        top:10px;
+        right: 10px;
+        border-radius: 8px;
+
+    }
+}   

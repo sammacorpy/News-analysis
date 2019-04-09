@@ -1,0 +1,28 @@
+<nav class="nav  loco-navs">
+    
+    <div class="buttoncontainer" *ngIf="activesidenavbutton" (click)="onClickSideNavButton()">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+    <div class="buttoncontainer" *ngIf="!activesidenavbutton" (click)="onClickSideNavButton()">
+      <div class="bar barc1"></div>
+      <div class="bar barc2"></div>
+    </div>
+
+    <div routerLink="/u" class="navbar-brands">
+      <img src="/assets/loco.png" width="35" height="35" alt="">
+      
+    </div>
+    <div *ngIf="user" routerLink="/me" class="navbar-userprofile ">
+        <img  [src]="user.photoURL" width="35" height="35" alt="">
+        <div class="username">{{user.displayName | firstname}}</div>
+        
+    </div>
+    <div *ngIf=" user && user.isAnonymous" routerLink="/anonymous" class="navbar-userprofile ">
+      <!-- <img  [src]="" width="35" height="35" alt="Anonymous"> -->
+      <div class="username">Anonymous User!</div>
+      
+    </div>
+      
+</nav>  

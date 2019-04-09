@@ -1,0 +1,21 @@
+.my-news{
+    // display: fixed;
+    height: calc(100vh - 51px);
+    // overflow: auto;
+    background: #FAFAFA;
+}
+
+.news-cards{
+    margin:15px 0;
+}
+
+
+viewnews{
+    position: fixed;
+    top:51px;
+    background: rgba(10,10,10,0.7);
+    align-items: center;
+    width: 100vw;
+    height: calc(100vh - 51px);
+    overflow-y:scroll; 
+}

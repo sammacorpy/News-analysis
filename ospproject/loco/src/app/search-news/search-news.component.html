@@ -1,0 +1,19 @@
+<section class="main-news">
+  <div class="loco-jumbotron">
+    Search News
+    <br>
+    <input [(ngModel)]="searchq" type="search" placeholder="Search for headlines...." class="searchbar"
+      (keyup)="searchnews()">
+  </div>
+  <div class="row no-gutter news">
+    <div class="col news-cards" *ngFor="let news of allnews; trackBy: tracknews">
+      <news-card [news]="news" (triggershareevents)="setsharedata($event)" [mode]="0" (togglenewsview)="setnewsview($event)"></news-card>
+    </div>
+  </div>
+  <!-- <div infiniteScroll [infiniteScrollDistance]="1.5" [infiniteScrollThrottle]="1000" (scrolled)="onScroll()" (click)="onScroll()">sasa</div> -->
+
+</section>
+<viewnews  [news]="viewnews" *ngIf="shownewsview" (togglenewsviewfrominside)="shownewsview=!shownewsview" (click)="shownewsview=!shownewsview"></viewnews>
+
+<sharepost *ngIf="sharetriggered" (triggershareinside)="sharetriggered=!sharetriggered" [sharedata]="sharedata">
+</sharepost>

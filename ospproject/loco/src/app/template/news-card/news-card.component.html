@@ -1,0 +1,37 @@
+<mat-card class="loco-card" (click)="opennews()">
+
+  <mat-card-header>
+    <div mat-card-avatar class="header-user-icon"><img *ngIf="news.userinfo" class="user-icon" width="40px" height="40px" [src]="news.userinfo.photoURL" alt=""><img *ngIf="news.userinfo==null" class="user-icon" width="40px" height="40px" src="/assets/avatar.png" alt=""></div>
+    <mat-card-title class="title">{{news.headline}}</mat-card-title>
+    <mat-card-subtitle *ngIf="news.userinfo">Author: {{news.userinfo.displayName | firstname}}</mat-card-subtitle>
+    <mat-card-subtitle *ngIf="news.userinfo==null">Author: {{news.author | firstname}}</mat-card-subtitle>
+    <!-- <div class="editpost" *ngIf="mode==1 && user && user.uid==news.author"><mat-icon  [routerLink]="'/u/editpost/'+news.author+'/'+news.id" class="action flex">edit</mat-icon></div> -->
+  </mat-card-header>
+
+  <img *ngIf="news.imageURL" mat-card-image [src]="news.imageURL" alt="News" height="220px">
+  <img *ngIf="!news.imageURL" mat-card-image src="/assets/noimage.png" alt="News" height="220px">
+
+
+  <mat-card-content>
+    <div class="contents-item">
+      {{news.content | summary:60}}
+    </div>
+
+  </mat-card-content>
+  <hr class="line">
+  <mat-card-actions>
+
+
+      
+      <div class="actions">
+          <mat-icon  class="action like " [class.liked]="likedbyme" (click)="likedbyme?dislikeit():likeit();$event.stopPropagation()">thumb_up</mat-icon> <div *ngIf="likecount && likecount>0" class="liketext">{{likedbyme?(likecount>1)?'You and '+(likecount-1)+" others":"You":likecount}}</div>
+          <mat-icon class="action share " (click)="trigshareev();$event.stopPropagation()" [class.shared]="shared">share</mat-icon>
+          <mat-icon class="action views">visibility</mat-icon>
+          <mat-icon *ngIf="mode==1 && user && user.uid==news.author" [routerLink]="'/u/editpost/'+news.author+'/'+news.id" class="action flex">edit</mat-icon>
+      </div>
+
+
+
+
+  </mat-card-actions>
+</mat-card>

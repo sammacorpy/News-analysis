@@ -1,0 +1,26 @@
+<section class="login_background">
+
+  <div class="login_form">
+    <div class=" login_form_email">
+      <div class=" row no-gutter"><input type="text" [(ngModel)]="logindet.uname" class="element" autofocus placeholder="Enter your Username"></div>
+      <div class=" row no-gutter"><input type="password" [(ngModel)]="logindet.password" class="element" placeholder="Enter your Password"></div>
+      <div class=" row no-gutter" *ngIf="mode==1;"><button type="button" mat-raised-button class="element" (click)="signinemail()">Login</button></div>
+      <div class=" row no-gutter" *ngIf="mode==0;"><button type="button"  mat-raised-button class="element"  (click)="signupemail()">Sign Up</button></div>
+      
+      <div class=" row no-gutter trimlower">
+        <a routerLink="/" class="forgot">Forgot Password?</a>
+        <a (click)="changemode(0)" *ngIf="mode==1" class="forgot signup">Sign up?</a>
+        <a (click)="changemode(1)" *ngIf="mode==0" class="forgot signup">Login?</a>
+      </div>
+      
+    
+
+    </div>
+    <button class="row no-gutter login_form_google" mat-raised-button (click)="signinwithgoogle()"> Login With <img src="/assets/gsign.png" alt="Sign in With Google" class="signin">oogle</button>
+  </div>
+
+  <button  (click)="anonymous()" class="login_anonymous">
+    Skip
+  </button>
+
+</section>

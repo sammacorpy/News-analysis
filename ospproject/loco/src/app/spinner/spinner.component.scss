@@ -1,0 +1,135 @@
+#spinner2 {
+    width: 95px;
+    height: 95px;
+    border-radius: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: block;
+    margin: auto;
+    background-color: transparent;
+    border: 2px solid transparent;
+    border-top-color: #1666A8;
+    border-bottom-color: #1666A8;
+    animation: spin 1.5s linear 0s infinite;
+}
+
+#spinner1 {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: block;
+    margin: auto;
+    background-color: transparent;
+    animation: spin 1.5s linear 0s infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+#spinner1::after {
+    content: "";
+    width: 14px;
+    height: 14px;
+    border-radius: 100%;
+    display: inline-block;
+    background-color: #FF4081;
+    position: absolute;
+    margin: auto;
+    top: -9px;
+    left: 14px;
+    animation: bouncef 2s linear 0s infinite;
+}
+
+#spinner1::before {
+    content: "";
+    width: 14px;
+    height: 14px;
+    border-radius: 100%;
+    display: inline-block;
+    background-color: #FF4081;
+    position: absolute;
+    margin: auto;
+    bottom: -9px;
+    left: 13px;
+    animation: bounce 2s linear 0s infinite;
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateY(0px);
+    }
+    25% {
+        transform: translateY(20px);
+    }
+    50% {
+        transform: translateY(0px);
+    }
+    75% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+@keyframes bouncef {
+    0% {
+        transform: translateY(0px);
+    }
+    25% {
+        transform: translateY(-20px);
+    }
+    50% {
+        transform: translateY(0px);
+    }
+    75% {
+        transform: translateY(20px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+
+.block-ux{
+    position: fixed;
+    top: 0;
+    left:0;
+    margin: auto;
+    background: rgba(0, 0, 0, 0.8);
+    width: 100vw;
+    height: 100vh;
+    z-index: 1200;
+}
+
+.msg{
+    position: fixed;
+    width: 100vw;
+    color: #ddd;
+    background: transparent;
+    top: 30%;
+    z-index: 1300;
+    text-align: center;
+    display: table;
+    left: 0;
+    right: 0;
+    margin: auto;
+    font-family: "Maven Pro" sans-serif;
+
+
+
+}

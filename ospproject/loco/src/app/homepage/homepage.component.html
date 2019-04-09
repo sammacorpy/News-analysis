@@ -1,0 +1,10 @@
+<topnav (clicksidenav)="sidenavstat=!sidenavstat" [activesidenavbutton]="!sidenavstat"></topnav >
+
+<sidenav [showsidenav]="sidenavstat" (clicksidenavbg)="sidenavstat=!sidenavstat" (triggerchat)="togglechat()"></sidenav>
+
+<router-outlet></router-outlet>
+
+
+
+<quicknav (triggerchat)=togglechat()></quicknav>
+<chatroom *ngIf="chatopen"  (triggerchat)="togglechat()" [load]="chatopen"></chatroom>

@@ -1,0 +1,18 @@
+<div class="bgquicknav" *ngIf="show" (click)="show=!show">
+
+  </div>
+
+  <div class="quicknav" cdkDrag mat-raised-button (click)="show=!show; $event.stopPropagation()">
+    <div class="innav" *ngIf="show">
+      <div class="items" routerLink="/u/postnews">Post<mat-icon class="item">create</mat-icon>
+      </div>
+      <div class="items" routerLink="/u/search">Search<mat-icon class="item">search</mat-icon>
+      </div>
+      <div class="items" (click)="togglechat()">Chats <mat-icon class="item">chat</mat-icon>
+      </div>
+    </div>
+    <mat-icon *ngIf="!show">add_circle</mat-icon>
+    <mat-icon *ngIf="show">remove_circle</mat-icon>
+  </div>
+
+

@@ -1,0 +1,87 @@
+<section class="postnews">
+  <div class="loco-jumbotron">
+    
+    {{(editmode)?"Edit News":"Post News"}}
+  </div>
+
+
+  <div class="row no-gutter contents">
+    <div class="col-md-6 no-gutter">
+      <div class="item">
+        <mat-form-field><input type="text" matInput placeholder="Headline" [(ngModel)]="newsdata.headline"></mat-form-field>
+      </div>
+      <div class="item">
+
+        <mat-form-field><textarea name="" id="" rows="5" matInput placeholder="Description" [(ngModel)]="newsdata.content"></textarea></mat-form-field>
+
+      </div>
+      <div class="item">
+        <mat-form-field class="example-chip-list">
+          <mat-chip-list #chipList aria-label="tag selection">
+            <mat-chip *ngFor="let tag of tags" [selectable]="selectable" [removable]="removable"
+              (removed)="remove(tag)">
+              {{tag}}
+              <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+            </mat-chip>
+            <input placeholder="New tag..." #tagInput [formControl]="tagCtrl" [matAutocomplete]="auto"
+              [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+              [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)">
+          </mat-chip-list>
+          <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+            <mat-option *ngFor="let tag of filteredtags | async" [value]="tag">
+              {{tag}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>
+      <div class="item">
+        <mat-form-field><input type="text" matInput placeholder="News Region | country | state" [(ngModel)]="newsdata.region"></mat-form-field>
+      </div>
+    </div>
+    <div class="col outerdrop">
+
+
+
+      <div class="dropfiles">
+        <ng-container *ngIf="imageuploadpreUrl">
+          <div class="dropZone" Class="active" [style.background-image]="'url('+imageuploadpreUrl+')'" >
+            <div id="clearallbutton" >
+              <mat-icon class="cloudicon" (click)="clearBucket()" matTooltip="Click here to clear your upload bucket"
+              matTooltipPosition="right">close</mat-icon>
+            </div>
+            
+            
+
+          </div>
+        </ng-container>
+
+
+        <ng-container *ngIf="!imageuploadpreUrl">
+          <div class="dropZone" Dropzone (filesDropped)="handleDrop($event)"
+            (filesHovered)="dropactivestatus($event)" [ngClass]="{'active':dropactive}">
+            <label for="fileidup" matTooltip="Drop it here or click to upload files" matTooltipPosition="right">
+              <mat-icon class="cloudicon" style="cursor: pointer">cloud_upload</mat-icon>
+            </label>
+            <input id="fileidup" style="display: none;" type="file" (change)="detectFiles($event)">
+            <div class="button-upload txt4">
+              Drop your Image here
+            </div>
+          </div>
+        </ng-container>
+        
+
+      </div>
+
+
+      <!-- <div *ngIf="attachmentClicked;then uploadDocuments"></div> -->
+
+
+
+    </div>
+  </div>
+  <div class="postme">
+    <button mat-button class="post-btn" (click)="startUpload(selectedFiles)">{{(editmode)?"Edit me!":"Post me!"}}</button>
+  </div>
+</section>
+
+<app-spinner  [uiblocker]="uiblock"></app-spinner>

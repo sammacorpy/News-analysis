@@ -1,0 +1,144 @@
+.newsview{
+    display: block;
+    position: fixed;
+    height: auto;
+    max-height: calc(100vh - 151px );
+    overflow-y: scroll;
+    background: rgba(255,255,255,1);
+    // margin:101px 10px 10px 50px;
+
+    // min-width: 500px;
+    // align-items: center;
+    width: calc(100% - 20px);
+    max-width: 700px;
+    left: 0;
+    right: 0;
+    margin: 50px auto;
+    // overflow-x: scroll;
+    border-radius: 10px;
+    padding:30px;
+    &::-webkit-scrollbar { width: 0 !important }
+    overflow: -moz-scrollbars-none;
+    -ms-overflow-style: none;
+}
+
+.headline{
+    text-align: left;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Righteous' cursive;
+}
+.image{
+    text-align: center;
+    align-items: center;
+}
+.newsimage{
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    max-height: 400px;
+}
+.footers{
+    position: initial;
+    bottom: 10px;
+
+}
+.content{
+    word-break: break-word;
+}
+
+
+.action{
+    margin: 3px 20px auto 0;
+    cursor: pointer;
+    font-size: 20px;
+    display: inline;
+   
+}
+.actions{
+    display: inline;
+   
+}
+.right{
+    position: relative;
+    float: right;
+}
+.author{
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+}
+.like{
+    color: #444;
+}
+.share{
+    color: #444;
+}
+.views{
+    color:#444;
+    margin-right:0; 
+}
+.liked{
+    color: rgb(59, 230, 145);
+    margin-right: 5px;
+}
+.shared{
+    color:rgb(48, 226, 117)
+}
+.viewed{
+    color:#444;
+}
+// .editpost{
+//     display: block;
+//     width: 38%;
+//     float: right;
+//     outline: none;
+    
+// }
+.flex{
+    margin:13px 0px;
+    float: right;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+}
+
+
+
+// @keyframes likes{
+//     0%{
+//         font-size: 20px;
+//         // color: #444s
+//     }
+//     50%{
+//         border-radius:100%; 
+//         text-shadow: 0 0 15px rgb(45, 212, 143);
+
+//     }
+//     100%{
+//         color: rgb(45, 223, 140);
+
+//     }
+// }
+// .liked{
+//     animation: likes 0.6s ease-in-out forwards;
+// }
+
+.liketext{
+    display: inline-flex;
+    position: relative;
+    top:-5px;
+    font-size:12px;
+    margin-right: 20px; 
+}
+.close{
+    position: absolute;
+    top:15px;
+    right: 15px;
+    align-self: flex-end;
+    float: right;
+    cursor: pointer;
+    &:hover{
+        color: rgb(248, 71, 71);
+    }
+}

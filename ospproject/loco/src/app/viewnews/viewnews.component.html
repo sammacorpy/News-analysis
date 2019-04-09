@@ -1,0 +1,45 @@
+<div class="newsview"(click)="$event.stopPropagation()">
+
+
+  <div class="body">
+    <div class="headers row no-gutter">
+        <div class="headline col no-gutter">
+            {{news.headline}}
+          </div>
+          <span class="close" (click)="closenews();$event.stopPropagation()"><mat-icon>close</mat-icon></span>
+    </div>
+    <hr>
+    <div class="image">
+      <img *ngIf="news.imageURL" [src]="news.imageURL" alt="News image not awailable" class="newsimage">
+      <!-- <img *ngIf="!news.imageURL" src="/src/assets/noimage.png" alt="News image not awailable" class="newsimage"> -->
+
+    </div>
+    <hr *ngIf="news.imageURL">
+    <div class="content">{{news.content}}</div>
+
+
+    <div class="footers">
+      <hr>
+      <div class="row no-gutter">
+
+        <div class="col no-gutter author" *ngIf="news.userinfo">Author: {{news.userinfo.displayName | firstname}}</div>
+        <div class=" col no-gutter author" *ngIf="news.userinfo==null">Author: {{news.author}}</div>
+
+        <span class="right">
+          <div class="actions">
+            <mat-icon class="action like " [class.liked]="likedbyme" (click)="likedbyme?dislikeit():likeit()">thumb_up
+            </mat-icon>
+            <div *ngIf="likecount && likecount>0" class="liketext">
+              {{likedbyme?(likecount>1)?'You and '+(likecount-1)+" others":"You":likecount}}
+            </div>
+            <mat-icon class="action share " (click)="trigshareev()" [class.shared]="shared">share</mat-icon>
+            <mat-icon class="action views">visibility</mat-icon>
+
+          </div>
+        </span>
+
+      </div>
+    </div>
+  </div>
+
+</div>

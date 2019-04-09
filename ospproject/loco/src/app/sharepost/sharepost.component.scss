@@ -1,0 +1,27 @@
+.shade{
+    position: fixed;
+    background: rgba(10,10,10,0.3);
+    top:0;
+    left: 0;
+    align-items: center;
+    right:0;
+    margin: auto;
+    height: 100vh;
+}
+.sharebg{
+    background: white;
+    position: fixed;
+    bottom: 30px;
+    display: inline-flex;
+    left:20px;
+
+    border-radius:15px; 
+    padding: 20px;
+}
+
+// .IN-2bc0215c-7188-4274-b598-1969e06d4d7c-1G9ISYhSF8XoOmdcl0yKDu{
+//     background: #fff !important;
+//     width:50px !important;
+//     height: 50px !important;
+//     border-radius:100% !important; 
+// }
