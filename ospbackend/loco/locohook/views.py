@@ -142,7 +142,7 @@ def postnews(requests):
 
             except Exception as e:
                 print(e)
-            news['timestamp']= x
+            news['timestamp']= x*1000
 
             if(data['description'][i] not in allnewsid):
                 db.collection(u'News').add(news);

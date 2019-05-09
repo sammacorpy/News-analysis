@@ -16,7 +16,7 @@ import { EditpostComponent } from './editpost/editpost.component';
 const routes: Routes =  [   {path: '', component: InitplateComponent},
                             {path: 'login', component: LoginComponent},
                             {path: 'u', component: HomepageComponent, canActivate:[AuthGuard], children: [
-                              {path: '', component: MainComponent, canActivate: [AuthGuard]},
+                              {path: '', component: MainComponent, canActivate: [AuthGuard],runGuardsAndResolvers: 'always',},
                               // {path: 'chat', component: ChatroomComponent, canActivate: [AuthGuard]},
                               {path: 'search', component: SearchNewsComponent, canActivate: [AuthGuard]},
                               {path: 'postnews', component: PostnewsComponent, canActivate: [AuthGuard]},
@@ -28,7 +28,7 @@ const routes: Routes =  [   {path: '', component: InitplateComponent},
                         ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{onSameUrlNavigation: 'reload'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -1,16 +1,17 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { News } from '../interfaces/news';
 import { NewsService } from '../news.service';
 import { User } from '../interfaces/user';
 import { AuthService } from '../auth.service';
 import { Subscription } from 'rxjs';
+import 'rxjs/add/operator/take';
 
 @Component({
   selector: 'viewnews',
   templateUrl: './viewnews.component.html',
   styleUrls: ['./viewnews.component.scss']
 })
-export class ViewnewsComponent implements OnInit {
+export class ViewnewsComponent implements OnInit, OnDestroy {
 
   user: User;
   likecount;
@@ -63,15 +64,17 @@ export class ViewnewsComponent implements OnInit {
   }
 
   closenews(){
-    console.log(
-      "jahsja"
-    )
+
     this.togglenewsview.emit(this.news);
   }
 
   trigshareev() {
     this.shared = !this.shared;
     this.triggershareevents.emit(this.news.url);
+  }
+
+  ngOnDestroy(){
+    this.subs.unsubscribe();
   }
 
 }

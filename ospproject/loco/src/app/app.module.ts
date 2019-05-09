@@ -86,7 +86,7 @@ import { ChatService } from './chat.service';
     AppRoutingModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule.enablePersistence({experimentalTabSynchronization:true}),
+    AngularFirestoreModule,
     AngularFireAuthModule,
     BrowserAnimationsModule,
     MatRippleModule,

@@ -3,8 +3,8 @@
     New Feeds
   </div>
   <div class="row no-gutter news"  >
-      <div class="col news-cards" *ngFor="let news of allnews; trackBy: tracknews">
-          <news-card [news]="news" (triggershareevents)="setsharedata($event)" [mode]="0"  (togglenewsview)="setnewsview($event)"></news-card>
+      <div @fadeup class="col news-cards" *ngFor="let news of allnews">
+          <news-card  [news]="news" (triggershareevents)="setsharedata($event)" [mode]="0"  (togglenewsview)="setnewsview($event)"></news-card>
       </div>
 
   </div>

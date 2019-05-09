@@ -15,6 +15,10 @@
   <mat-card-content>
     <div class="contents-item">
       {{news.content | summary:60}}
+
+      <br>
+      <br>
+      <span class="date">{{news.timestamp | date: 'mediumDate'}}</span>
     </div>
 
   </mat-card-content>

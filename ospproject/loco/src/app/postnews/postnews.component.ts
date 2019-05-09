@@ -169,7 +169,7 @@ export class PostnewsComponent {
             this.newsdata.imageURL = u;
             // this.newsdata.imageURL=;
             this.newsdata.tags = this.tags;
-            this.newsdata.timestamp = firebase.firestore.FieldValue.serverTimestamp();
+            this.newsdata.timestamp = firebase.firestore.Timestamp.now().toMillis();
             this.crud.post('News', this.newsdata).then(() => {
               this.uiblock = false;
               this.route.navigate(['/u']);
@@ -181,7 +181,7 @@ export class PostnewsComponent {
       }
       else {
         this.newsdata.tags = this.tags;
-        this.newsdata.timestamp = firebase.firestore.FieldValue.serverTimestamp();
+        this.newsdata.timestamp = firebase.firestore.Timestamp.now().toMillis();
         this.crud.post('News', this.newsdata).then(() => {
           this.uiblock = false;
           this.route.navigate(['/u']);
@@ -211,7 +211,7 @@ export class PostnewsComponent {
           res.ref.getDownloadURL().then(u => {
             this.newsdata.imageURL = u;
             this.newsdata.tags = this.tags;
-            this.newsdata.timestamp = firebase.firestore.FieldValue.serverTimestamp();
+            this.newsdata.timestamp = firebase.firestore.Timestamp.now().toMillis();
             this.crud.update('News/' + this.newsid, this.newsdata).then(() => {
               this.uiblock = false;
               this.route.navigate(['/u']);
@@ -221,7 +221,7 @@ export class PostnewsComponent {
       }
       else {
         this.newsdata.tags = this.tags;
-        this.newsdata.timestamp = firebase.firestore.FieldValue.serverTimestamp();
+        this.newsdata.timestamp = firebase.firestore.Timestamp.now().toMillis();
         this.crud.update('News/' + this.newsid, this.newsdata).then(() => {
           this.uiblock = false;
           this.route.navigate(['/u']);

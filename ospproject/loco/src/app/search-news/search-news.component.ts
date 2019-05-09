@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { TakesnapshotService } from '../takesnapshot.service';
 import { NewsService } from '../news.service';
 import { News } from '../interfaces/news';
+// import { take } from 'rxjs/operators';
+import 'rxjs/add/operator/take';
+
 
 @Component({
   selector: 'app-search-news',
@@ -20,7 +23,7 @@ export class SearchNewsComponent implements OnInit {
   constructor(private __: TakesnapshotService, private ns: NewsService) {
     __.takesnap();
 
-    this.ns.latestnews.subscribe(news => this.allnews = news);
+    this.ns.latestnews().take(1).subscribe(news => this.allnews = news);
 
   }
 

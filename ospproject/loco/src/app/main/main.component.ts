@@ -1,10 +1,11 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
 import { TakesnapshotService } from '../takesnapshot.service';
 import { NewsService } from '../news.service';
+
+import { Observable, combineLatest, Subscription } from 'rxjs';
 import 'rxjs/add/operator/take';
-import { Observable, combineLatest } from 'rxjs';
 import { News } from '../interfaces/news';
-import { forEach } from '@angular/router/src/utils/collection';
+// import { forEach } from '@angular/router/src/utils/collection';
 import { trigger, style, state, transition, animate } from '@angular/animations';
 
 @Component({
@@ -15,16 +16,19 @@ import { trigger, style, state, transition, animate } from '@angular/animations'
     trigger('fadeup',[
       state('void',style({
         opacity:0,
-        transform: 'translateY(-100%)'
+        transform:'translateY(+100%)'
+
       })),
-      transition("void=>*",animate("500ms ease-in",style({
+      transition("void=>*",[animate("900ms ease-Out",style({
         opacity:1,
-        transform: 'translateY(0%)'
-      })))
+        transform:'translateY(0%)'
+
+
+      }))])
     ])
   ]
 })
-export class MainComponent implements OnInit {
+export class MainComponent implements OnInit, OnDestroy {
 
   // allnews=['a','b','c','a','b','c','a','b','c']
   sharetriggered: boolean = false;
@@ -35,11 +39,13 @@ export class MainComponent implements OnInit {
   viewnews;
   shownewsview: boolean=false;
   // @HostListener(scroll)
+  subs:Subscription;
   constructor(private ns: NewsService, private __: TakesnapshotService) {
     __.takesnap();
 
     // this.allnews=this.ns.latestnews;
-    this.ns.latestnews.subscribe(alnws => {
+    this.ns.latestnews().take(1).subscribe(alnws => {
+      console.log(alnws[0]);
       this.allnews = alnws
       this.checkpointdate = alnws[alnws.length - 1].timestamp;
     });
@@ -61,8 +67,7 @@ export class MainComponent implements OnInit {
     console.log(scrollY);
     console.log("Scrolling");
     let count = 8;
-    this.ns.getmorenews(this.checkpointdate, count).subscribe(news => {
-      console.log(news);
+    this.ns.getmorenews(this.checkpointdate, count).take(1).subscribe(news => {
       news.forEach(element => {
         this.allnews.push(element);
       });
@@ -75,9 +80,17 @@ export class MainComponent implements OnInit {
     })
   }
 
-  tracknews(index, news) {
-    return news ? news.id : undefined;
+  // tracknews(index, news) {
+  //   return news ? news.id : undefined;
 
+  // }
+
+  ngOnDestroy(){
+    console.log(
+      "destroyed"
+    );
+    // this.subs.unsubscribe();
+    this.allnews=[];
   }
 
 }

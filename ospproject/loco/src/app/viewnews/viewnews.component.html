@@ -1,12 +1,14 @@
-<div class="newsview"(click)="$event.stopPropagation()">
+<div class="newsview" (click)="$event.stopPropagation()">
 
 
   <div class="body">
     <div class="headers row no-gutter">
-        <div class="headline col no-gutter">
-            {{news.headline}}
-          </div>
-          <span class="close" (click)="closenews();$event.stopPropagation()"><mat-icon>close</mat-icon></span>
+      <div class="headline col no-gutter">
+        {{news.headline}}
+      </div>
+      <span class="close" (click)="closenews();$event.stopPropagation()">
+        <mat-icon>close</mat-icon>
+      </span>
     </div>
     <hr>
     <div class="image">
@@ -15,7 +17,11 @@
 
     </div>
     <hr *ngIf="news.imageURL">
-    <div class="content">{{news.content}}</div>
+    <div class="content">{{news.content}}<br><a *ngIf="news.url" [href]="news.url">Read more...</a>
+      <br>
+      <br>
+      <span class="date">{{news.timestamp | date: 'mediumDate'}}</span>
+    </div>
 
 
     <div class="footers">

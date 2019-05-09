@@ -15,14 +15,13 @@ export class NewsService {
 
   constructor(private storage: AngularFireStorage, private db: AngularFirestore, ) { }
 
-  enddate$: BehaviorSubject<Date>;
-
-  get latestnews() {
+    latestnews() {
+      console.log("service called latest news");
     let news$: Observable<News[]>;
     let newsref: AngularFirestoreCollection<News>;
 
     newsref = this.db.collection<News>('News', ref => {
-      return ref.orderBy('timestamp', 'desc').limit(32);
+      return ref.orderBy('timestamp', 'desc').limit(16);
     });
 
     news$ = newsref.snapshotChanges().map(actions => {
@@ -33,6 +32,7 @@ export class NewsService {
       });
     });
     news$ = news$.switchMap(newss => {
+      console.log("servce",newss[0]);
       for (let i = 0; i < newss.length; i++) {
         if (newss[i].author && !newss[i].author.includes('/') && !newss[i].author.includes('http') && !newss[i].author.includes('https') && !newss[i].author.includes(':')) {
 
@@ -40,6 +40,7 @@ export class NewsService {
             newss[i]['userinfo'] = u;
           });
         }
+
       }
       return of(newss);
     })
