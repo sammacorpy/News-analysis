@@ -1,32 +1,34 @@
-<section class="sdnavbackgrd" *ngIf="showsidenav" (click)="clicksdnav()">
-  <section class = "sideNav" *ngIf="showsidenav">
-  
-    <div class="profile" *ngIf="user && !user.isAnonymous">
-      <img [src]="user.photoURL" routerLink="/u/profile" [alt]="user.displayName" class="image" width="140px" height="140px">
-      <div class="username">
-        {{"Hello "+(user.displayName | firstname) +"!"}}
-      </div>
+<section class="sdnavbackgrd" *ngIf="showsidenav" (click)="clicksdnav()"></section>
+<section @slide class="sideNav" *ngIf="showsidenav">
+
+  <div class="profile" *ngIf="user && !user.isAnonymous">
+    <img [src]="user.photoURL" routerLink="/u/profile" [alt]="user.displayName" class="image" width="140px"
+      height="140px">
+    <div class="username">
+      {{"Hello "+(user.displayName | firstname) +"!"}}
     </div>
-    <div class="profile adjust" *ngIf="user && user.isAnonymous">
-      
-      <div class="username">
-        {{"Hello Anonymous!"}}
-      </div>
+  </div>
+  <div class="profile adjust" *ngIf="user && user.isAnonymous">
+
+    <div class="username">
+      {{"Hello Anonymous!"}}
     </div>
-  
-    <div class="contents">
-      <div routerLink="/u" class="items">Home</div>
-      <div routerLink="/u/mynews" class="items">My Post</div>
-      <div routerLink="/u/postnews" class="items">Post News</div>
-      <div routerLink="/u/search" class="items">Search News</div>
-  
-      <div routerLink="/u/profile" class="items">Profile settings</div>
-      <div (click)="togglechat()" class="items">Chat</div>
-      <hr class="line green">
-      <div routerLink="" class="items"(click)="signout()">Sign Out</div>
-      <div routerLink="" class="items">Terms and Condition</div>
-    </div>
-  </section>
-  
+  </div>
+
+
+  <div class="contents">
+    <!-- <hr class="line green"> -->
+    <div routerLink="/u" class="items">Home</div>
+    <div routerLink="/u/mynews" class="items">My Post</div>
+    <div routerLink="/u/postnews" class="items">Post News</div>
+    <div routerLink="/u/search" class="items">Search News</div>
+
+    <div *ngIf="user && !user.isAnonymous" routerLink="/u/profile" class="items">Profile settings</div>
+    <div (click)="togglechat()" class="items">Chat</div>
+    <!-- <hr class="line green"> -->
+    <div routerLink="" class="items" (click)="signout()">Sign Out</div>
+    <div routerLink="" class="items">Terms and Condition</div>
+  </div>
 </section>
 
+<!-- </section> -->

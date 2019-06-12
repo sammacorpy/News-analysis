@@ -34,7 +34,8 @@ export class MainComponent implements OnInit, OnDestroy {
   sharetriggered: boolean = false;
   sharedata = null;
   checkpointdate: Date;
-  allnews: News[];
+  allnews: News[]=[];
+  currentnews: News[]=[];
 
   viewnews;
   shownewsview: boolean=false;
@@ -45,8 +46,17 @@ export class MainComponent implements OnInit, OnDestroy {
 
     // this.allnews=this.ns.latestnews;
     this.ns.latestnews().take(1).subscribe(alnws => {
-      console.log(alnws[0]);
-      this.allnews = alnws
+      alnws.forEach(element=>{
+        if((new Date(element.timestamp)).getDate()== (new Date().getDate())){
+          this.currentnews.push(element);
+
+        }
+        else{
+          this.allnews.push(element);
+        }
+      })
+      // console.log(alnws[0]);
+      // this.allnews = alnws
       this.checkpointdate = alnws[alnws.length - 1].timestamp;
     });
   }
@@ -69,7 +79,15 @@ export class MainComponent implements OnInit, OnDestroy {
     let count = 8;
     this.ns.getmorenews(this.checkpointdate, count).take(1).subscribe(news => {
       news.forEach(element => {
-        this.allnews.push(element);
+       
+        if((new Date(element.timestamp)).getDate()== (new Date().getDate())){
+          this.currentnews.push(element);
+
+        }
+        else{
+          this.allnews.push(element);
+        }
+        // this.allnews.push(element);
       });
       // this.allnews.concat(news);
       if (news.length>0){

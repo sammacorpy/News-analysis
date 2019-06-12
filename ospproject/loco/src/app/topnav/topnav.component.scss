@@ -1,7 +1,7 @@
 .loco-navs{
-    background: #ECECEC;
+    background: #222;
     padding: 8px 10px;
-    box-shadow: 1px 1px 5px #999;
+
     overflow-x: auto;
     display: flex;
     align-items: center;
@@ -20,7 +20,8 @@
     width: 30px;
     height: 4px;
     border-radius:5px; 
-    background: rgb(14, 100, 57);
+    background: #78E9CE;
+    // box-shadow: 0 0 5px #78E9CE;
     margin: 4px 10px;
 
 }
@@ -33,6 +34,7 @@
 .navbar-brands{
     margin:auto 10px; 
     cursor: pointer;
+    outline:none;
 }
 .navbar-userprofile{
     border-radius: 100%;
@@ -40,12 +42,16 @@
     right:40px;
     display: flex;
     align-items: center;
-    color: rgb(11, 97, 57);
-    text-shadow: 1px 4px 5px #999;
+    color: #78E9CE;
+    // text-shadow: 0px 0px 5px rgb(231, 233, 120);
     font-family: 'Righteous';
     cursor: pointer;
+    outline:none;
+
 }
 .navbar-userprofile>img{
     border-radius:100%; 
     margin: auto 10px;
+    outline:none;
+
 }

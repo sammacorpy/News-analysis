@@ -5,9 +5,12 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import url('https://fonts.googleapis.com/css?family=Maven+Pro|Raleway|Titillium+Web');
 @import url('https://fonts.googleapis.com/css?family=Righteous');
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script&display=swap');
 body{
     padding: 0;
     margin: 0;
+    // background: #000077;
+    
     
 }
 .no-gutter{
@@ -18,14 +21,14 @@ body{
     text-align: center;
     width: 100%;
     font-family: 'Righteous';
-    padding: 20px 0 10px 0;
+    padding: 40px 0 30px 0;
     font-size: 20px; 
     font-family: Righteous;
     font-style: normal;
     font-weight: normal;
     line-height: normal;
 
-    color: #00695C;
+    color: rgb(80, 80, 80);
 
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    // text-shadow: 0px 0px 2px #78E9CE;
 }

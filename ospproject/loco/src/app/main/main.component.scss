@@ -1,12 +1,21 @@
 .main-news{
     display: block;
-    height: calc(100vh - 51px );
+    // height: calc(100vh - 51px );
     // overflow-y: scroll;
     background: #FAFAFA;
+    // background-image: linear-gradient(to bottom, rgb(58, 58, 58), #150329);
+
 }
 
 .news-cards{
     margin:15px 0;
+}
+
+.latest{
+    background:rgb(80, 80, 80);
+}
+.latest-text{
+    color: #FAFAFA;
 }
 
 viewnews{

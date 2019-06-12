@@ -1,8 +1,25 @@
 <section class="main-news" >
+  
   <div class="loco-jumbotron">
-    New Feeds
+    Latest Feeds
   </div>
-  <div class="row no-gutter news"  >
+  <div class="row no-gutter news" *ngIf="currentnews" >
+      <div @fadeup class="col news-cards" *ngFor="let news of currentnews">
+          <news-card  [news]="news" (triggershareevents)="setsharedata($event)" [mode]="0"  (togglenewsview)="setnewsview($event)"></news-card>
+      </div>
+
+  </div>
+  <div class="row no-gutter news" *ngIf="currentnews.length<0" >
+    we are updating our server, sorry for the inconvenience caused
+  </div>
+  <br>
+  <br>
+  <div class="loco-jumbotron" *ngIf="allnews.length>0">
+    Previous Feeds
+  </div>
+  <br>
+  <br>
+  <div class="row no-gutter news"  *ngIf="allnews.length>0">
       <div @fadeup class="col news-cards" *ngFor="let news of allnews">
           <news-card  [news]="news" (triggershareevents)="setsharedata($event)" [mode]="0"  (togglenewsview)="setnewsview($event)"></news-card>
       </div>

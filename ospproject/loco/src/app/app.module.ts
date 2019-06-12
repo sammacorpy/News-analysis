@@ -54,6 +54,8 @@ import { SummaryPipe } from './summary.pipe';
 import { ViewnewsComponent } from './viewnews/viewnews.component';
 import {MatBadgeModule} from '@angular/material/badge';
 import { ChatService } from './chat.service';
+import { HtmlfilterPipe } from './htmlfilter.pipe';
+import { AutokPipe } from './autok.pipe';
 
 @NgModule({
   declarations: [
@@ -79,6 +81,8 @@ import { ChatService } from './chat.service';
     SpinnerComponent,
     SummaryPipe,
     ViewnewsComponent,
+    HtmlfilterPipe,
+    AutokPipe,
     // InfiniteScrollModule,
   ],
   imports: [

@@ -8,7 +8,7 @@
     right: 0;
     margin: auto;
     // font-family: 'Righteous';
-    color:#000;
+    color:rgb(78, 78, 78);
 }
 .title{
     font-size: 16px !important;
@@ -59,23 +59,32 @@ mat-card-header{
    
 }
 .like{
-    color: #444;
+    color: #777;
 }
 .share{
-    color: #444;
+    color: #777;
+    
 }
 .views{
-    color:#444;
+    color:#777;
+
 }
 .liked{
-    color: rgb(59, 230, 145);
+    color: rgb(58, 211, 137);
     margin-right: 5px;
+    text-shadow: 0 0 10px rgb(58, 211, 137);
+
 }
 .shared{
-    color:rgb(48, 226, 117)
+    color:#BD00FF;
+    text-shadow: 0 0 10px #BD00FF;
+
 }
 .viewed{
-    color:#444;
+    color:rgb(255,115,0);
+    text-shadow: 0 0 10px rgb(255,115,0);
+
+    
 }
 // .editpost{
 //     display: block;
@@ -91,7 +100,11 @@ mat-card-header{
     outline: none;
     padding: 0;
 }
-
+.mat-card{
+    background: transparent;
+    border: 1.5px solid rgb(124, 124, 124);
+    // box-shadow: 0 0 5px rgb(82, 83, 83);
+}
 
 
 // @keyframes likes{

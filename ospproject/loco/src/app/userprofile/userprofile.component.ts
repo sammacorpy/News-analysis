@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { AuthService } from '../auth.service';
+import 'rxjs/add/operator/take';
 @Component({
   selector: 'app-userprofile',
   templateUrl: './userprofile.component.html',
@@ -7,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserprofileComponent implements OnInit {
 
-  constructor() { }
+  user;
+  constructor(private gauth: AuthService) { 
+    gauth.user$.take(1).subscribe(x=>this.user=x);
+  }
 
   ngOnInit() {
   }

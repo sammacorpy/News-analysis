@@ -1,3 +1,16 @@
-<p>
-  userprofile works!
-</p>
+<div class="row no-gutter loco_jumbotron">
+  <div class="loco_tray">
+    <div class="textview"><span class="a">Your </span> - <span class="b"> Acts</span> </div>
+    <!-- <div class="hrr"></div> -->
+    <!-- <span>Your Views</span> -->
+
+    <div class="row no-gutter fullviewdet">
+      <div class="col no-gutter det d_1"><div> <mat-icon [inline]="true">remove_red_eye</mat-icon></div> 485</div>
+      <div class="col no-gutter det d_2"> <div> <mat-icon [inline]="true">thumb_up</mat-icon></div> 965</div>
+      <div class="col no-gutter det d_3"><div> <mat-icon [inline]="true">share</mat-icon></div> {{200000000 | autok}}</div>
+    </div>
+  </div>
+  <div class="no-gutter coverpic">
+    <div class="no-gutter userpic" *ngIf="user"><img src="{{user.photoURL}}" id="profilepic"></div>
+  </div>
+</div>

@@ -5,10 +5,10 @@
         <mat-icon class="closeicon" (click)="togglechat()">close</mat-icon>
       </span>
     </div>
-    <hr class="line">
+    <!-- <hr class="line"> -->
     <div class="chatbody">
       <ng-container *ngFor="let chat of chats">
-        <div *ngIf="user.uid!=chat.uid" class="row no-gutter others msg">
+        <div *ngIf="user.uid!=chat.uid" class="row no-gutter others msg" id="{{chat.id}}">
           <div class="chatt">
             <div class="userimage">
               <img *ngIf="chat.userphoto" [src]="chat.userphoto" width="40" height="40">
@@ -16,7 +16,7 @@
             <div class="messages">{{chat.message}} </div>
           </div>
         </div>
-        <div *ngIf="user.uid==chat.uid" class="row no-gutter selfs msg">
+        <div *ngIf="user.uid==chat.uid" class="row no-gutter selfs msg" id="{{chat.id}}">
           <div class="chatt">
             <div class="userimage">
               <img *ngIf="chat.userphoto" [src]="chat.userphoto" width="40" height="40">
@@ -37,12 +37,12 @@
       <!-- todelete -->
 
     </div>
-    <hr class="line">
+    <!-- <hr class="line"> -->
 
     <div class="footers">
       <div class="row no-gutter chatcontrol">
         <div class="col no-gutter chatinp ">
-          <textarea class="chattext" rows="2" placeholder="Write something here..." [(ngModel)]="msgcompose"></textarea>
+          <div #msgbody class="chattext" rows="2" placeholder="Write something here..." (keyup)="setmsg(msgbody)" (keyup.enter)="sendmsg()" contenteditable></div >
 
         </div>
         <div class="col-2 no-gutter pushchat"><button class="chatbtn" (click)="sendmsg()">

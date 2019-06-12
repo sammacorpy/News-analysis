@@ -14,7 +14,7 @@
       <img src="/assets/loco.png" width="35" height="35" alt="">
       
     </div>
-    <div *ngIf="user" routerLink="/me" class="navbar-userprofile ">
+    <div *ngIf="user" routerLink="/u/profile" class="navbar-userprofile ">
         <img  [src]="user.photoURL" width="35" height="35" alt="">
         <div class="username">{{user.displayName | firstname}}</div>
         
