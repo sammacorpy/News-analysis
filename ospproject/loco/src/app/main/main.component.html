@@ -3,14 +3,15 @@
   <div class="loco-jumbotron">
     Latest Feeds
   </div>
-  <div class="row no-gutter news" *ngIf="currentnews" >
+  <div class="row no-gutter news" *ngIf="currentnews && currentnews.length > 0" >
+
       <div @fadeup class="col news-cards" *ngFor="let news of currentnews">
           <news-card  [news]="news" (triggershareevents)="setsharedata($event)" [mode]="0"  (togglenewsview)="setnewsview($event)"></news-card>
       </div>
 
   </div>
-  <div class="row no-gutter news" *ngIf="currentnews.length<0" >
-    we are updating our server, sorry for the inconvenience caused
+  <div class="row no-gutter newssss" *ngIf="currentnews && currentnews.length == 0" >
+    <nothingfound></nothingfound>
   </div>
   <br>
   <br>

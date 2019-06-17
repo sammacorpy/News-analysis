@@ -1,0 +1,44 @@
+<div class="body" *ngIf="news">
+  <div class="headers row no-gutter">
+    <div class="headline col no-gutter">
+      {{news.headline}}
+    </div>
+   
+  </div>
+  <hr>
+  <div class="image">
+    <img *ngIf="news.imageURL" [src]="news.imageURL" alt="News image not awailable" class="newsimage">
+
+  </div>
+  <hr *ngIf="news.imageURL">
+  <div class="content">{{news.content}}<br><a *ngIf="news.url" [href]="news.url">Read more...</a>
+    <br>
+    <br>
+    <span class="date">{{news.timestamp | date: 'mediumDate'}}</span>
+  </div>
+
+
+  <div class="footers">
+    <hr>
+    <div class="row no-gutter">
+
+      <div class="col no-gutter author" *ngIf="news.userinfo">Author: {{news.userinfo.displayName | firstname}}</div>
+      <div class=" col no-gutter author" *ngIf="news.userinfo==null">Author: {{news.author}}</div>
+
+      <span class="right">
+        <div class="actions">
+          <mat-icon class="action like " [class.liked]="likedbyme" (click)="likedbyme?dislikeit():likeit()">thumb_up
+          </mat-icon>
+          <div *ngIf="likecount && likecount>0" class="liketext">
+            {{likedbyme?(likecount>1)?'You and '+(likecount-1)+" others":"You":likecount}}
+          </div>
+          <mat-icon class="action share " (click)="trigshareev()" [class.shared]="shared" *ngIf="news.url">share</mat-icon>
+          <mat-icon class="action views">visibility</mat-icon>
+
+        </div>
+      </span>
+
+    </div>
+  </div>
+</div>
+<sharepost *ngIf="sharetriggered" (triggershareinside)="sharetriggered=!sharetriggered" [sharedata]="sharedata"></sharepost>

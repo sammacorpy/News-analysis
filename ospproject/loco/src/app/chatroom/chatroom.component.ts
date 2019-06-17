@@ -43,7 +43,6 @@ export class ChatroomComponent implements OnInit, OnDestroy, AfterViewChecked {
     this.triggerchat.emit();
   }
   sendmsg() {
-    console.log("sending msg")
     document.getElementsByClassName("chattext")[0].innerHTML="";
     this.msgcompose=this.msgcompose.trim();
     if (this.msgcompose=="" )
@@ -62,7 +61,6 @@ export class ChatroomComponent implements OnInit, OnDestroy, AfterViewChecked {
 
   }
   scrollto(id) {
-    console.log("I am from scroll", id);
     let el = document.getElementById(id);
     el.scrollIntoView();
   }

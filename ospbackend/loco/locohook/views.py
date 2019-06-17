@@ -55,7 +55,7 @@ def category(source, m):
 
 def getDailyNews():
     sources = getSources()
-    key =  'c947d9d49375402e93376aa74b1aeb27' #'539b70851d274c7988515e8cb036128a' '6b25a55c0566498a83bd13852b7331ec'
+    key =  '539b70851d274c7988515e8cb036128a' #'c947d9d49375402e93376aa74b1aeb27' # '6b25a55c0566498a83bd13852b7331ec'
     url = 'https://newsapi.org/v1/articles?source={0}&sortBy={1}&apiKey={2}'
     responses = []
     for i, source in tqdm_notebook(enumerate(sources), total=len(sources)):

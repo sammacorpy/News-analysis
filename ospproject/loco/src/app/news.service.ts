@@ -16,7 +16,6 @@ export class NewsService {
   constructor(private storage: AngularFireStorage, private db: AngularFirestore, ) { }
 
     latestnews() {
-      console.log("service called latest news");
     let news$: Observable<News[]>;
     let newsref: AngularFirestoreCollection<News>;
 
@@ -32,7 +31,6 @@ export class NewsService {
       });
     });
     news$ = news$.switchMap(newss => {
-      console.log("servce",newss[0]);
       for (let i = 0; i < newss.length; i++) {
         if (newss[i].author && !newss[i].author.includes('/') && !newss[i].author.includes('http') && !newss[i].author.includes('https') && !newss[i].author.includes(':')) {
 
@@ -233,7 +231,6 @@ export class NewsService {
   }
   getlikes(id: string) {
     return this.db.collection<any>('News/' + id + '/likes').valueChanges().map(val => {
-      // console.log(val);
       return val.length;
     });
   }

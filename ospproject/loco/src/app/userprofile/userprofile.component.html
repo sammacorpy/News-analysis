@@ -1,16 +1,102 @@
 <div class="row no-gutter loco_jumbotron">
   <div class="loco_tray">
-    <div class="textview"><span class="a">Your </span> - <span class="b"> Acts</span> </div>
     <!-- <div class="hrr"></div> -->
     <!-- <span>Your Views</span> -->
 
-    <div class="row no-gutter fullviewdet">
-      <div class="col no-gutter det d_1"><div> <mat-icon [inline]="true">remove_red_eye</mat-icon></div> 485</div>
-      <div class="col no-gutter det d_2"> <div> <mat-icon [inline]="true">thumb_up</mat-icon></div> 965</div>
-      <div class="col no-gutter det d_3"><div> <mat-icon [inline]="true">share</mat-icon></div> {{200000000 | autok}}</div>
+    <div class="row no-gutter">
+
+      <div class="col-sm fsd">
+        <div class="row no-gutter profile">
+          <div class="col no-gutter editables userdet">
+            <div class="user" *ngIf="user">Hello <span #name [class.editmodeinput]="edit.name"
+                [attr.contenteditable]="edit.name" (keyup)="setcontent(email,'email')">{{user.displayName}}!</span>
+              &nbsp; <mat-icon class="editbtn" (click)="enableeditmode('name')">edit</mat-icon>
+            </div>
+            <div class="user" *ngIf="user">
+              <mat-icon [inline]="true">email</mat-icon> <span #email [class.editmodeinput]="edit.email"
+                [attr.contenteditable]="edit.email" (keyup)="setcontent(email,'email')">{{" "+user.email}}</span> &nbsp;
+              <mat-icon class="editbtn" (click)="enableeditmode('email')">edit</mat-icon>
+            </div>
+            <div class="user" *ngIf="currentlocation">
+              <mat-icon [inline]="true">location_on</mat-icon> {{" "+currentlocation}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm fsdxs">
+        <div class="actstatus">
+          <div class="textview"><span class="a">Your </span> - <span class="b"> Acts</span> </div>
+
+          <div class="row no-gutter fullviewdet">
+            <div class="col no-gutter det d_1">
+              <div>
+                <mat-icon [inline]="true">remove_red_eye</mat-icon>
+              </div> {{counts.view | autok}}
+            </div>
+            <div class="col no-gutter det d_2">
+              <div>
+                <mat-icon [inline]="true">thumb_up</mat-icon>
+              </div> {{counts.likes | autok}}
+            </div>
+            <div class="col no-gutter det d_3">
+              <div>
+                <mat-icon [inline]="true">share</mat-icon>
+              </div> {{counts.share | autok}}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+
   </div>
   <div class="no-gutter coverpic">
     <div class="no-gutter userpic" *ngIf="user"><img src="{{user.photoURL}}" id="profilepic"></div>
   </div>
 </div>
+
+<div class="row no-gutter activity">
+  <div class="col-md no-gutter activ1">
+    <div class="row no-gutter recent-interested ">
+      <div class="chipstitle">Your Recent Interest</div>
+      <div class="content">
+        <mat-chip-list aria-label="recent interest selection">
+          <mat-chip *ngFor="let item of ri" color="primary" class="data">{{item}}</mat-chip>
+
+
+        </mat-chip-list>
+
+      </div>
+    </div>
+    <div class="row no-gutter">
+      <div class="chipstitle">Recently Viewed feeds</div>
+      <div class="content">
+        <ng-container *ngIf="rfeeds && rfeeds.length>0; else notfound">
+          <div class="feedviewonlytitle" *ngFor="let feed of rfeeds" [routerLink]="['/u/feed/',feed.id]">
+            {{feed.headline}}
+          </div>
+        </ng-container>
+
+      </div>
+
+
+    </div>
+  </div>
+  <div class="col-md no-gutter activ2">
+
+    <div class="activitytitle">Activity History</div>
+    <div class="activitycontent scx">
+      <ng-container *ngIf="rhistory && rhistory.length>0; else notfound">
+        <div *ngFor="let rh of rhistory" class="actss" [routerLink]="['/u/feed/',rh[0]]"> {{rh[1]}}</div>
+
+      </ng-container>
+
+
+    </div>
+
+  </div>
+</div>
+
+
+<ng-template #notfound>
+  <nothingfound></nothingfound>
+</ng-template>

@@ -56,6 +56,10 @@ import {MatBadgeModule} from '@angular/material/badge';
 import { ChatService } from './chat.service';
 import { HtmlfilterPipe } from './htmlfilter.pipe';
 import { AutokPipe } from './autok.pipe';
+import { HttpClientModule } from '@angular/common/http';
+import { NothingfoundComponent } from './nothingfound/nothingfound.component';
+import { ProfileService } from './profile.service';
+import { ViewfeedComponent } from './viewfeed/viewfeed.component';
 
 @NgModule({
   declarations: [
@@ -83,10 +87,13 @@ import { AutokPipe } from './autok.pipe';
     ViewnewsComponent,
     HtmlfilterPipe,
     AutokPipe,
+    NothingfoundComponent,
+    ViewfeedComponent,
     // InfiniteScrollModule,
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
@@ -116,6 +123,7 @@ import { AutokPipe } from './autok.pipe';
     CrudService,
     NewsService,
     ChatService,
+    ProfileService,
   ],
   bootstrap: [AppComponent]
 })

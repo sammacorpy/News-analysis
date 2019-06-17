@@ -5,6 +5,7 @@ import { User } from '../interfaces/user';
 import { AuthService } from '../auth.service';
 import { Subscription } from 'rxjs';
 import 'rxjs/add/operator/take';
+import { ProfileService } from '../profile.service';
 
 @Component({
   selector: 'viewnews',
@@ -22,14 +23,12 @@ export class ViewnewsComponent implements OnInit, OnDestroy {
   subs: Subscription;
   @Input('news') news: News;
   shared: boolean =false;
-  constructor(private ns: NewsService, private auth: AuthService) {
+  constructor(private ns: NewsService, private auth: AuthService, private ps: ProfileService) {
     this.subs = this.auth.user$.map(u => this.user = u).map(u => {
       this.ns.liked(this.news.id, u.uid).subscribe((res) => {
-        console.log(res);
         this.likedbyme = res;
       });
       this.ns.getlikes(this.news.id).subscribe(x => {
-        console.log(x);
         this.likecount = x;
 
       });
@@ -41,19 +40,23 @@ export class ViewnewsComponent implements OnInit, OnDestroy {
 
 
   likeit() {
-    console.log("liked", this.news.id);
+    this.ps.recordhistory("like",this.news.id,this.user.uid);
+    
+    this.ps.updateuserlikeactivities(this.user,this.news.id);
+
     this.ns.setlike(this.news.id, this.user.uid);
   }
 
   dislikeit() {
     this.ns.dislike(this.news.id, this.user.uid);
+    this.ps.recordhistory("dislike",this.news.id,this.user.uid);
+
   }
   likedcount() {
-    // return 1;
-    // console.log("dfdf");
+
 
     this.ns.getlikes(this.news.id).subscribe(val => {
-      // console.log("dfdf",val);
+
 
     });
   }
@@ -70,7 +73,7 @@ export class ViewnewsComponent implements OnInit, OnDestroy {
 
   trigshareev() {
     this.shared = !this.shared;
-    this.triggershareevents.emit(this.news.url);
+    this.triggershareevents.emit({url: this.news.url, id: this.news.id, userid: this.user.uid});
   }
 
   ngOnDestroy(){

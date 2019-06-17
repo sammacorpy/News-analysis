@@ -69,20 +69,28 @@
 .det{
 
     margin:auto;
-    max-width: 200px;
+    max-width: 100px;
     
     text-align: center;
-    font-size: 30px;
+    font-size: 15px;
     font-family: 'Maven Pro', sans-serif;
     font-weight: normal;
-    height:200px;
+    height:100px;
     border-radius: 100%;
     &>div{
-        font-size: 50px;
+        font-size: 20px;
     }
     padding: 25px;
     transform: rotateX(25deg);
     
+}
+.fsd{
+    // max-width: 40vw;
+    margin: auto;
+}
+.fsdxs{
+    max-width: 45vw;
+    margin: auto;
 }
 .textstyle{
     transform: rotatex(0deg);
@@ -129,7 +137,10 @@
 
      
 }
-
+.actstatus{
+    position: relative;
+    right: 10px;
+}
 #profilepic{
     margin: 0;
     position: relative;
@@ -146,6 +157,156 @@
     border-radius: 100%;
     // box-shadow: 0px 0 5px rgb(155, 161, 160);
 }
+
+
+
+
+
+
+.profile{
+    margin-top:50px;
+    width: 100%;
+    
+}
+.editbtn{
+    font-size: 15px;
+    cursor: pointer;
+    color: rgb(255, 115, 0);
+    // width: 10px;
+}
+
+.editmodeinput{
+
+    border:1px solid rgb(255, 115, 0);
+    padding: 5px;
+    color :rgb(255, 115, 0);
+}
+.userdet{
+    position: relative;
+    max-width: 40vw;
+    font-size: 22px;
+    word-break: break-all;
+    background: transparent;
+    font-family: 'Maven Pro', sans-serif;
+    color: antiquewhite;
+    font-weight: lighter;
+    &>div{
+        width: 100%;
+        margin: 15px 0;
+        text-align: left;
+        padding:0 50px;
+    }
+    float: right;
+
+}
+.editables{
+    padding: 0;
+}
+
+
+
+
+
+
+
+.activity{
+    margin-top:80px;
+
+}
+.activ1{
+    max-width: 40vw;
+    margin:0px auto;
+    &>div{
+        border:1px solid #222222;
+        width: 100%;
+        overflow-y: scroll;
+        margin: 50px auto;
+
+    }    
+}
+
+.activ2{
+    max-width: 40vw;
+    border-radius:20px 20px 20px 20px /20px 20px 20px 20px; 
+    background: rgb(37, 37, 37);
+    color: #fcfcfc;
+    height: 520px;
+    margin: 40px auto;
+    width: 100%;
+    border-left: 5px solid #10B98F;
+    border-right: 5px solid #10B98F; 
+    
+    
+    
+}
+.actss{
+    width: 100%;
+    text-align: left;
+    color: rgb(231, 229, 229);
+    &:hover{
+        color: rgb(4, 248, 155);
+    }
+}
+
+.chipstitle{
+    width: 100%;
+    text-align: center;
+    color: rgb(77, 77, 77);
+    font-family: 'Dancing+Script' cursive;
+    padding:10px;
+    font-size: 18px;
+    font-weight: bolder;
+    height: 50px;
+
+}
+.activitytitle{
+    width: 100%;
+    text-align: center;
+    color: rgb(10, 248, 149);
+    font-family: 'Dancing+Script' cursive;
+    padding:10px;
+    font-size: 18px;
+    font-weight: bolder;
+    height: 50px;
+}
+.content{
+    padding:10px;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+   
+}
+.activitycontent{
+    padding:10px 30px;
+    width: 100%;
+    height: 450px;
+    text-align: center;
+    overflow-y: scroll;
+    &>div{
+        margin:10px;
+    }
+}
+.feedviewonlytitle{
+    border:1px dotted #444;
+    color: #444;
+    padding: 8px;
+    text-align: left;
+    width: 100%;
+    margin: 8px auto; 
+    &:hover{
+        color: rgb(1, 187, 78);
+    }
+}
+.data{
+    margin: 8px;
+    
+    background-color: rgb(255, 166, 0) !important;
+    
+}
+.scx{
+    overflow-y: scroll;
+
+}
 @media(max-width:1000px){
     .det{
         font-size: 12px;
@@ -159,4 +320,22 @@
     .textview{
         font-size: 15px;
     }
+    .userdet{
+        font-size: 15px;
+        max-width: 100%;
+        
+
+    }
+    .fsdxs{
+        max-width: 90vw;
+        margin: auto;
+    }
+    .activ1{
+        max-width: 90vw;
+
+    }
+    .activ2{
+        max-width: 90vw;
+    }
 }
+

@@ -25,7 +25,7 @@ export class MypostsComponent implements OnInit {
       this.user=u;
       this.ns.getmynews(u.uid).subscribe(news => {
       this.allnews = news;
-      this.checkpoint=news[news.length-1].timestamp;
+      this.checkpoint=news.length>=1?news[news.length-1].timestamp:0;
       });
     });
     __.takesnap();

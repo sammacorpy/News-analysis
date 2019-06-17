@@ -23,7 +23,6 @@ export class ChatService {
 
   loadmessage() {
     return this.db.collection('localchats', ref => {
-      console.log(new Date())
       return ref.orderBy('timestamp', "desc").limit(30);
     }).snapshotChanges().map(action => {
       return action.map(a=>{

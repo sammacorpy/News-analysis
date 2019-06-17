@@ -12,16 +12,16 @@ import { trigger, style, state, transition, animate } from '@angular/animations'
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss'],
-  animations:[
-    trigger('fadeup',[
-      state('void',style({
-        opacity:0,
-        transform:'translateY(+100%)'
+  animations: [
+    trigger('fadeup', [
+      state('void', style({
+        opacity: 0,
+        transform: 'translateY(+100%)'
 
       })),
-      transition("void=>*",[animate("900ms ease-Out",style({
-        opacity:1,
-        transform:'translateY(0%)'
+      transition("void=>*", [animate("900ms ease-Out", style({
+        opacity: 1,
+        transform: 'translateY(0%)'
 
 
       }))])
@@ -34,29 +34,30 @@ export class MainComponent implements OnInit, OnDestroy {
   sharetriggered: boolean = false;
   sharedata = null;
   checkpointdate: Date;
-  allnews: News[]=[];
-  currentnews: News[]=[];
+  allnews: News[] = [];
+  currentnews: News[] = [];
 
   viewnews;
-  shownewsview: boolean=false;
+  shownewsview: boolean = false;
   // @HostListener(scroll)
-  subs:Subscription;
+  subs: Subscription;
   constructor(private ns: NewsService, private __: TakesnapshotService) {
     __.takesnap();
 
     // this.allnews=this.ns.latestnews;
     this.ns.latestnews().take(1).subscribe(alnws => {
-      alnws.forEach(element=>{
-        if((new Date(element.timestamp)).getDate()== (new Date().getDate())){
+      this.currentnews = [];
+
+      alnws.forEach(element => {
+        if ((new Date(element.timestamp)).getDate() == (new Date().getDate())) { //|| element.timestamp >= (new Date(parseInt(new Date().toTimeString()) - 5 * 60 * 60 * 100))
           this.currentnews.push(element);
 
         }
-        else{
+        else {
           this.allnews.push(element);
         }
       })
-      // console.log(alnws[0]);
-      // this.allnews = alnws
+
       this.checkpointdate = alnws[alnws.length - 1].timestamp;
     });
   }
@@ -68,30 +69,29 @@ export class MainComponent implements OnInit, OnDestroy {
     this.sharetriggered = !this.sharetriggered;
   }
 
-  setnewsview(data){
-    this.viewnews=data;
-    this.shownewsview=!this.shownewsview;
+  setnewsview(data) {
+    this.viewnews = data;
+    this.shownewsview = !this.shownewsview;
   }
 
   onScroll() {
-    console.log(scrollY);
-    console.log("Scrolling");
+
     let count = 8;
     this.ns.getmorenews(this.checkpointdate, count).take(1).subscribe(news => {
       news.forEach(element => {
-       
-        if((new Date(element.timestamp)).getDate()== (new Date().getDate())){
+
+        if ((new Date(element.timestamp)).getDate() == (new Date().getDate())) {
           this.currentnews.push(element);
 
         }
-        else{
+        else {
           this.allnews.push(element);
         }
         // this.allnews.push(element);
       });
       // this.allnews.concat(news);
-      if (news.length>0){
-        this.checkpointdate = news[news.length-1].timestamp;
+      if (news.length > 0) {
+        this.checkpointdate = news[news.length - 1].timestamp;
 
       }
       // return null;
@@ -103,12 +103,10 @@ export class MainComponent implements OnInit, OnDestroy {
 
   // }
 
-  ngOnDestroy(){
-    console.log(
-      "destroyed"
-    );
+  ngOnDestroy() {
+
     // this.subs.unsubscribe();
-    this.allnews=[];
+    this.allnews = [];
   }
 
 }

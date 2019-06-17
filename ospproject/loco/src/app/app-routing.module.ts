@@ -12,6 +12,7 @@ import { RecentnewsComponent } from './recentnews/recentnews.component';
 import { UserprofileComponent } from './userprofile/userprofile.component';
 import { MypostsComponent } from './myposts/myposts.component';
 import { EditpostComponent } from './editpost/editpost.component';
+import { ViewfeedComponent } from './viewfeed/viewfeed.component';
 
 const routes: Routes =  [   {path: '', component: InitplateComponent},
                             {path: 'login', component: LoginComponent},
@@ -24,6 +25,7 @@ const routes: Routes =  [   {path: '', component: InitplateComponent},
                               {path: 'mynews', component: MypostsComponent, canActivate: [AuthGuard]},
                               {path: 'profile', component: UserprofileComponent, canActivate: [AuthGuard]},
                               {path: 'editpost/:uid/:id', component: PostnewsComponent, canActivate: [AuthGuard]},
+                              {path: 'feed/:id', component:ViewfeedComponent, canActivate:[AuthGuard]},
                             ]}  
                         ];
 
