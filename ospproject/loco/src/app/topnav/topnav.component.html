@@ -14,12 +14,12 @@
       <img src="/assets/loco.png" width="35" height="35" alt="">
       
     </div>
-    <div *ngIf="user" routerLink="/u/profile" class="navbar-userprofile ">
+    <div *ngIf="user && !user.isAnonymous" routerLink="/u/profile" class="navbar-userprofile ">
         <img  [src]="user.photoURL" width="35" height="35" alt="">
         <div class="username">{{user.displayName | firstname}}</div>
         
     </div>
-    <div *ngIf=" user && user.isAnonymous" routerLink="/anonymous" class="navbar-userprofile ">
+    <div *ngIf=" user && user.isAnonymous" class="navbar-userprofile ">
       <!-- <img  [src]="" width="35" height="35" alt="Anonymous"> -->
       <div class="username">Anonymous User!</div>
       

@@ -1,5 +1,5 @@
 <section class="sdnavbackgrd" *ngIf="showsidenav" (click)="clicksdnav()"></section>
-<section @slide class="sideNav" *ngIf="showsidenav">
+<section @slide class="sideNav" *ngIf="showsidenav" (click)="clicksdnav()">
 
   <div class="profile" *ngIf="user && !user.isAnonymous">
     <img [src]="user.photoURL" routerLink="/u/profile" [alt]="user.displayName" class="image" width="140px"
