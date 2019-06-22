@@ -69,7 +69,7 @@
     </div>
     <div class="row no-gutter">
       <div class="chipstitle">Recently Viewed feeds</div>
-      <div class="content">
+      <div class="content ctx scx">
         <ng-container *ngIf="rfeeds && rfeeds.length>0; else notfound">
           <div class="feedviewonlytitle" *ngFor="let feed of rfeeds" [routerLink]="['/u/feed/',feed.id]">
             {{feed.headline}}

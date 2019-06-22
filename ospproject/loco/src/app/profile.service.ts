@@ -80,9 +80,10 @@ export class ProfileService {
         x.forEach(f => {
           o.push(this.db.doc('News/' + f.data().feedid).get().switchMap(feeds => {
 
-            data = feeds.data();
-            data.id = f.data().feedid;
-
+            if (feeds.data()) {
+              data = feeds.data();
+              data.id = f.data().feedid;
+            }
             return of(data);
           }));
 

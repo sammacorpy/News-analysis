@@ -23,24 +23,25 @@ export class ViewfeedComponent implements OnInit, OnDestroy {
   shared: boolean = false;
   sharetriggered: boolean;
   sharedata: any;
+  id;
   constructor(private ns: NewsService, private auth: AuthService, private cs: CrudService, private route: ActivatedRoute, private ps: ProfileService) {
-    let id = route.snapshot.paramMap.get('id');
-    this.cs.get('/News/' + id).take(1).map(newss => {
+    this.id = route.snapshot.paramMap.get('id');
+    this.cs.get('/News/' + this.id).take(1).map(newss => {
       if (newss.author && !newss.author.includes('/') && !newss.author.includes('http') && !newss.author.includes('https') && !newss.author.includes(':')) {
 
         this.cs.get('users/' + newss.author).take(1).subscribe(u => {
           newss['userinfo'] = u;
           this.news = newss;
-          this.news.id = id;
+          // this.id = id;
         });
       }
 
     }).map(res => {
       this.subs = this.auth.user$.map(u => this.user = u).map(u => {
-        this.ns.liked(this.news.id, u.uid).subscribe((res) => {
+        this.ns.liked(this.id, u.uid).subscribe((res) => {
           this.likedbyme = res;
         });
-        this.ns.getlikes(this.news.id).subscribe(x => {
+        this.ns.getlikes(this.id).subscribe(x => {
           this.likecount = x;
 
         });
@@ -53,22 +54,22 @@ export class ViewfeedComponent implements OnInit, OnDestroy {
 
 
   likeit() {
-    this.ps.recordhistory("like", this.news.id, this.user.uid);
+    this.ps.recordhistory("like", this.id, this.user.uid);
 
-    this.ps.updateuserlikeactivities(this.user, this.news.id);
+    this.ps.updateuserlikeactivities(this.user, this.id);
 
-    this.ns.setlike(this.news.id, this.user.uid);
+    this.ns.setlike(this.id, this.user.uid);
   }
 
   dislikeit() {
-    this.ns.dislike(this.news.id, this.user.uid);
-    this.ps.recordhistory("dislike", this.news.id, this.user.uid);
+    this.ns.dislike(this.id, this.user.uid);
+    this.ps.recordhistory("dislike", this.id, this.user.uid);
 
   }
   likedcount() {
 
 
-    this.ns.getlikes(this.news.id).subscribe(val => {
+    this.ns.getlikes(this.id).subscribe(val => {
 
 
     });
@@ -79,7 +80,7 @@ export class ViewfeedComponent implements OnInit, OnDestroy {
   trigshareev() {
     this.shared = !this.shared;
 
-    let data = { url: this.news.url, id: this.news.id, userid: this.user.uid }
+    let data = { url: this.news.url, id: this.id, userid: this.user.uid }
     this.sharedata = data;
     this.sharetriggered = !this.sharetriggered;
 
