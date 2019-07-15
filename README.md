@@ -1,5 +1,5 @@
 # News App
-
+Demo of project [link](https://ainews-42800.web.app) 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.6.
 
 ## Development server
