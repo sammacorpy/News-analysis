@@ -30,7 +30,6 @@ import { trigger, style, state, transition, animate } from '@angular/animations'
 })
 export class MainComponent implements OnInit, OnDestroy {
 
-  // allnews=['a','b','c','a','b','c','a','b','c']
   sharetriggered: boolean = false;
   sharedata = null;
   checkpointdate: Date;

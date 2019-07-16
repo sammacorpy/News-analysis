@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { TakesnapshotService } from '../takesnapshot.service';
 import { NewsService } from '../news.service';
 import { News } from '../interfaces/news';
@@ -11,7 +11,7 @@ import 'rxjs/add/operator/take';
   templateUrl: './search-news.component.html',
   styleUrls: ['./search-news.component.scss']
 })
-export class SearchNewsComponent implements OnInit {
+export class SearchNewsComponent implements OnInit , OnDestroy{
 
   allnews: News[];
   sharetriggered: boolean = false;
@@ -58,6 +58,9 @@ export class SearchNewsComponent implements OnInit {
   tracknews(index, news) {
     return news ? news.id : undefined;
 
+  }
+  ngOnDestroy(){
+    this.allnews=[];
   }
 
 }

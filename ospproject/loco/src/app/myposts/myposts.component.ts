@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy  } from '@angular/core';
 import { User } from '../interfaces/user';
 import { AuthService } from '../auth.service';
 import { Subscription } from 'rxjs';
@@ -11,7 +11,7 @@ import { News } from '../interfaces/news';
   templateUrl: './myposts.component.html',
   styleUrls: ['./myposts.component.scss']
 })
-export class MypostsComponent implements OnInit {
+export class MypostsComponent implements OnInit, OnDestroy {
   user: User;
   allnews: News[];
   subs: Subscription;
@@ -59,6 +59,11 @@ export class MypostsComponent implements OnInit {
   tracknews(index, news) {
     return news ? news.id : undefined;
 
+  }
+
+  ngOnDestroy(){
+    this.allnews=[];
+    this.subs.unsubscribe();
   }
 
 }
