@@ -30,7 +30,7 @@ export class MypostsComponent implements OnInit, OnDestroy {
     });
     __.takesnap();
 
-    this
+
   }
 
   setnewsview(data){
@@ -62,7 +62,7 @@ export class MypostsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(){
-    this.allnews=[];
+    this.allnews=[]
     this.subs.unsubscribe();
   }
 

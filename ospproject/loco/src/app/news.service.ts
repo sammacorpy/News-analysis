@@ -169,7 +169,7 @@ export class NewsService {
       return of(newss);
     })
     // news.
-    return news$;
+    return news$.take(1);
 
   }
 

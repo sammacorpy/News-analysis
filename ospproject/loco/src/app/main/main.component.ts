@@ -30,6 +30,7 @@ import { trigger, style, state, transition, animate } from '@angular/animations'
 })
 export class MainComponent implements OnInit, OnDestroy {
 
+  // allnews=['a','b','c','a','b','c','a','b','c']
   sharetriggered: boolean = false;
   sharedata = null;
   checkpointdate: Date;
@@ -46,6 +47,7 @@ export class MainComponent implements OnInit, OnDestroy {
     // this.allnews=this.ns.latestnews;
     this.ns.latestnews().take(1).subscribe(alnws => {
       this.currentnews = [];
+      this.allnews=[];
 
       alnws.forEach(element => {
         if ((new Date(element.timestamp)).getDate() == (new Date().getDate())) { //|| element.timestamp >= (new Date(parseInt(new Date().toTimeString()) - 5 * 60 * 60 * 100))

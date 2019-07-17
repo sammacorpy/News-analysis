@@ -23,7 +23,7 @@ export class SearchNewsComponent implements OnInit , OnDestroy{
   constructor(private __: TakesnapshotService, private ns: NewsService) {
     __.takesnap();
 
-    this.ns.latestnews().take(1).subscribe(news => this.allnews = news);
+    this.ns.latestnews().take(1).subscribe(news =>{ console.log("abccjheck, ",news ); this.allnews = news;});
 
   }
 
@@ -40,7 +40,7 @@ export class SearchNewsComponent implements OnInit , OnDestroy{
 
 
   searchnews() {
-    this.ns.searchnews(this.searchq).subscribe(news => {
+    this.ns.searchnews(this.searchq).take(1).subscribe(news => {
       this.allnews = news;
       this.checkpoint = news[news.length - 1].timestamp;
     });
