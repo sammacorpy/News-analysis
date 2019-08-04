@@ -4,13 +4,13 @@
 
 export const environment = {
   production: false,
-  firebase:{
-    apiKey: 'AIzaSyDVk77UV6BWem6l4TqHkkxxCiUoJAjE03Y',
-    authDomain: 'ainews-42800.firebaseapp.com',
-    databaseURL: 'https://ainews-42800.firebaseio.com',
-    projectId: 'ainews-42800',
-    storageBucket: 'ainews-42800.appspot.com',
-    messagingSenderId: '918021140059'
+    firebase:{
+    apiKey: 'enter your firebase apikey here',
+    authDomain: 'enter your hosted domain here',
+    databaseURL: 'enter your database link here',
+    projectId: 'enter your project id here',
+    storageBucket: 'enter your storage bucket url here',
+    messagingSenderId: 'enter your messagingsender id here'
   }
 };
 
